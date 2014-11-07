@@ -1,18 +1,21 @@
 <?php
 /*************************************************************************************/
-/*      Copyright (c) Benjamin Perche                                                */
-/*      email : bperche9@gmail.com                                                   */
+/*      This file is part of the Thelia package.                                     */
+/*                                                                                   */
+/*      Copyright (c) OpenStudio                                                     */
+/*      email : dev@thelia.net                                                       */
+/*      web : http://www.thelia.net                                                  */
 /*                                                                                   */
 /*      For the full copyright and license information, please view the LICENSE.txt  */
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
 
-namespace Lovenunu\Math;
+namespace Thelia\Math;
 
 /**
  * Class Number
  * @package Lovenunu\Math
- * @author Benjamin Perche <bperche9@gmail.com>
+ * @author Benjamin Perche <bperche@openstudio.com>
  */
 class Number implements \Serializable, \JsonSerializable
 {
@@ -64,13 +67,13 @@ class Number implements \Serializable, \JsonSerializable
         return array($dividend, $divisor);
     }
 
-    protected function computeDividend($askedDividend, $askedDivisor)
+    protected function computeDividend($askedDividend, $askedDivisor, Number $number)
     {
-        if ($this->divisor !== $askedDivisor) {
-            $this->dividend *= $askedDivisor;
-            $askedDividend *= $this->divisor;
+        if ($number->divisor !== $askedDivisor) {
+            $number->dividend *= $askedDivisor;
+            $askedDividend *= $number->divisor;
 
-            $this->divisor *= $askedDivisor;
+            $number->divisor *= $askedDivisor;
         }
 
         return $askedDividend;
@@ -89,53 +92,59 @@ class Number implements \Serializable, \JsonSerializable
     public function add($number)
     {
         list($askedDividend, $askedDivisor) = $this->retrieve($number);
-        $askedDividend = $this->computeDividend($askedDividend, $askedDivisor);
+        $returnNumber = clone $this;
+
+        $askedDividend = $this->computeDividend($askedDividend, $askedDivisor, $returnNumber);
 
         /**
          * If divisors are different, just multiply them
          */
 
-        $this->dividend += $askedDividend;
-        $this->simplify();
+        $returnNumber->dividend += $askedDividend;
+        $returnNumber->simplify();
 
-        return $this;
+        return $returnNumber;
     }
 
     public function sub($number)
     {
         list($askedDividend, $askedDivisor) = $this->retrieve($number);
-        $askedDividend = $this->computeDividend($askedDividend, $askedDivisor);
+        $returnNumber = clone $this;
+
+        $askedDividend = $this->computeDividend($askedDividend, $askedDivisor, $returnNumber);
 
         /**
          * If divisors are different, just multiply them
          */
 
-        $this->dividend -= $askedDividend;
-        $this->simplify();
+        $returnNumber->dividend -= $askedDividend;
+        $returnNumber->simplify();
 
-        return $this;
+        return $returnNumber;
     }
 
     public function multiply($number)
     {
         list($askedDividend, $askedDivisor) = $this->retrieve($number);
+        $returnNumber = clone $this;
 
-        $this->dividend *= $askedDividend;
-        $this->divisor *= $askedDivisor;
-        $this->simplify();
+        $returnNumber->dividend *= $askedDividend;
+        $returnNumber->divisor *= $askedDivisor;
+        $returnNumber->simplify();
 
-        return $this;
+        return $returnNumber;
     }
 
     public function divide($number)
     {
         list($askedDividend, $askedDivisor) = $this->retrieve($number);
+        $returnNumber = clone $this;
 
-        $this->dividend *= $askedDivisor;
-        $this->divisor *= $askedDividend;
-        $this->simplify();
+        $returnNumber->dividend *= $askedDivisor;
+        $returnNumber->divisor *= $askedDividend;
+        $returnNumber->simplify();
 
-        return $this;
+        return $returnNumber;
     }
 
     // --- Results ------------

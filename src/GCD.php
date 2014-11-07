@@ -1,18 +1,21 @@
 <?php
 /*************************************************************************************/
-/*      Copyright (c) Benjamin Perche                                                */
-/*      email : bperche9@gmail.com                                                   */
+/*      This file is part of the Thelia package.                                     */
+/*                                                                                   */
+/*      Copyright (c) OpenStudio                                                     */
+/*      email : dev@thelia.net                                                       */
+/*      web : http://www.thelia.net                                                  */
 /*                                                                                   */
 /*      For the full copyright and license information, please view the LICENSE.txt  */
 /*      file that was distributed with this source code.                             */
 /*************************************************************************************/
 
-namespace Lovenunu\Math;
+namespace Thelia\Math;
 
 /**
  * Class GCD
- * @package Lovenunu\Math
- * @author Benjamin Perche <bperche9@gmail.com>
+ * @package Thelia\Math
+ * @author Benjamin Perche <bperche@openstudio.com>
  */
 class GCD 
 {

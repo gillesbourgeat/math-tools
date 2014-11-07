@@ -1,5 +1,5 @@
 {
-    "name": "lovenunu/price",
+    "name": "thelia/math-tools",
     "description": "Number management library",
     "require-dev": {
         "phpunit/phpunit": "4.1.*"
@@ -8,13 +8,13 @@
     "authors": [
         {
             "name": "Benjamin Perche",
-            "email": "bperche9@gmail.com"
+            "email": "bperche@openstudio.com"
         }
     ],
     "require": {},
     "autoload": {
-        "psr-0": {
-            "Lovenunu":"src/"
+        "psr-4": {
+            "Thelia\\Math\\":"src/"
         }
     }
 }
