@@ -11,6 +11,11 @@
             "email": "bperche@openstudio.com"
         }
     ],
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0-dev"
+        }
+    },
     "require": {},
     "autoload": {
         "psr-4": {
