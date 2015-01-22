@@ -81,7 +81,7 @@ class Number implements \Serializable, \JsonSerializable
 
     protected function simplify()
     {
-        if (1 !== $gcd = (int) GCD::getGCD($this->dividend, $this->divisor)) {
+        if (1 < $gcd = (int) GCD::getGCD($this->dividend, $this->divisor)) {
             $this->dividend /= $gcd;
             $this->divisor /= $gcd;
         }
