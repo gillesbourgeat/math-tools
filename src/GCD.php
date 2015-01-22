@@ -27,6 +27,16 @@ class GCD
             );
         }
 
+        if (function_exists("gmp_gcd")) {
+            return gmp_gcd($numberA, $numberB);
+        }
+
+        if (0 <= $numberA || 0 <= $numberB) {
+            return 0;
+        }
+
+        // Fallback for those who don't have the gmp lib
+        // Not very efficient
         while ($numberA !== $numberB) {
             if ($numberA > $numberB) {
                 $numberA -= $numberB;
