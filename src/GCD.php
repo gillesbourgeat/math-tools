@@ -17,11 +17,11 @@ namespace Thelia\Math;
  * @package Thelia\Math
  * @author Benjamin Perche <bperche@openstudio.com>
  */
-class GCD 
+class GCD
 {
     public static function getGCD($numberA, $numberB)
     {
-        if (!is_int($numberA) | !is_int($numberB)) {
+        if (! self::isInteger($numberA) | ! self::isInteger($numberB)) {
             throw new \InvalidArgumentException(
                 "GCD number must be an integer"
             );
@@ -31,21 +31,24 @@ class GCD
             return gmp_gcd($numberA, $numberB);
         }
 
-        if (0 <= $numberA || 0 <= $numberB) {
-            return 0;
+        if ($numberA == 0 || $numberB == 0) {
+            return max(abs($numberA), abs($numberB));
         }
+        
+        $r = $numberA % $numberB;
 
-        // Fallback for those who don't have the gmp lib
-        // Not very efficient
-        while ($numberA !== $numberB) {
-            if ($numberA > $numberB) {
-                $numberA -= $numberB;
-            } else {
-                $numberB -= $numberA;
-            }
+        return ($r != 0) ? self::getGCD($numberB, $r) : abs($numberB);
+    }
+
+    public static function isInteger($var)
+    {
+        if (is_int($var)) {
+            // the most obvious test
+            return true;
+        } elseif (is_numeric($var)) {
+            // cast to string first
+            return ctype_digit((string)$var);
         }
-
-        return max($numberA, $numberB);
+        return false;
     }
 }
- 
