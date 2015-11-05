@@ -18,6 +18,14 @@ use Thelia\Math\Number;
  */
 class NumberTest extends PHPUnit_Framework_TestCase
 {
+    public function testMult()
+    {
+        $numberA = new Number('1');
+        $numberB = $numberA->multiply('1.2393');
+
+        $this->assertEquals(1.2393, $numberB->getNumber(-1));
+    }
+
     public function testNumberAdd()
     {
         $numberA = new Number('1.99');

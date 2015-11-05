@@ -28,7 +28,7 @@ class GCD
         }
 
         if (function_exists("gmp_gcd")) {
-            return gmp_gcd($numberA, $numberB);
+            return gmp_intval(gmp_gcd($numberA, $numberB));
         }
 
         if ($numberA == 0 || $numberB == 0) {
