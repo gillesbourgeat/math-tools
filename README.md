@@ -3,6 +3,8 @@ Maths tools
 
 This library includes some tools for math operations.
 
+[![Build Status](https://travis-ci.org/thelia/math-tools.png?branch=master)](https://travis-ci.org/thelia/math-tools) [![License](https://poser.pugx.org/thelia/math-tools/license.png)](https://packagist.org/packages/thelia/math-tools) [![Scrutinizer Quality Score](https://scrutinizer-ci.com/g/thelia/math-tools/badges/quality-score.png?s=61e3e04a69bffd71c29b08e5392080317a546716)](https://scrutinizer-ci.com/g/thelia/math-tools/)
+
 Number
 ---
 
