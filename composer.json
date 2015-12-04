@@ -2,7 +2,6 @@
     "name": "thelia/math-tools",
     "description": "Number management library",
     "require-dev": {
-        "phpunit/phpunit": "4.1.*"
     },
     "license": "LGPL",
     "authors": [
@@ -16,7 +15,9 @@
             "dev-master": "1.0-dev"
         }
     },
-    "require": {},
+    "require": {
+        "phpunit/phpunit": "4.5.*"
+    },
     "autoload": {
         "psr-4": {
             "Thelia\\Math\\":"src/"
